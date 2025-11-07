@@ -23,7 +23,7 @@ app.use(cors ? cors() : (req, res, next) => {
 });
 app.use(express.json());
 
-const mongoUri = 'mongodb+srv://sonet_shaji:Sonet2680@cluster0.9c68deh.mongodb.net/?appName=Cluster0';
+const mongoUri = 'process.env.MONGO_URL';
 mongoose
   .connect(mongoUri, {
     useNewUrlParser: true,
@@ -33,7 +33,7 @@ mongoose
   .catch(err => console.error('MongoDB error:', err));
 
 app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from backend!' });
+  res.json({ message: 'Hello from backend! and Hai' });
 });
 
 const PORT = process.env.PORT || 5000;
