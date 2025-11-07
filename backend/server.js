@@ -23,7 +23,7 @@ app.use(cors ? cors() : (req, res, next) => {
 });
 app.use(express.json());
 
-const mongoUri = 'mongodb://mongo:27017/dockerlearn';
+const mongoUri = 'mongodb+srv://sonet_shaji:Sonet2680@cluster0.9c68deh.mongodb.net/?appName=Cluster0';
 mongoose
   .connect(mongoUri, {
     useNewUrlParser: true,

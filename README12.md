@@ -48,3 +48,29 @@ Docker daemon / permission denied when connecting to /var/run/docker.sock
   - Install podman-docker and use podman:
     - sudo dnf install podman-docker
     - docker compose up --build  # will use podman under the hood
+
+Git push error: "src refspec main does not match any"
+- Meaning: your local repo has no branch named `main` or there are no commits to push.
+- Quick fixes:
+
+  1) If you haven't committed yet (common for new repos):
+     - git add .
+     - git commit -m "Initial commit"
+     - git branch -M main
+     - git remote add origin <repo-url>   # only if origin not set
+     - git push -u origin main
+
+  2) If your branch is named `master` (rename and push):
+     - git branch -M main
+     - git push -u origin main
+
+  3) Push current branch to remote `main` without renaming locally:
+     - git push -u origin HEAD:main
+
+  4) Debugging commands:
+     - git branch --show-current
+     - git log --oneline
+     - git remote -v
+     - git ls-remote --heads origin
+
+Replace <repo-url> with your GitHub remote URL (for example the one printed in the error). After running the appropriate commands, retry: git push -u origin main
